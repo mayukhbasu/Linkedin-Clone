@@ -1,5 +1,5 @@
 import CreateIcon from "@material-ui/icons/Create";
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Feed.css';
 import InputOption from "./InputOptions";
 import ImageIcon from "@material-ui/icons/Image";
@@ -7,8 +7,26 @@ import SubscriptionsIcon from "@material-ui/icons/Subscriptions";
 import EventNoteIcon from "@material-ui/icons/EventNote";
 import CalendarViewDayIcon from "@material-ui/icons/CalendarViewDay";
 import Post from "./Post";
+import { db } from "./firebase";
 
 const Feed = () => {
+    const [posts, setPosts] = useState([]);
+    const sendPost = (e) => {
+        e.preventDefault();
+        
+    }
+    useEffect(() => {
+        db.collection("posts")
+          
+          .onSnapshot((snapshot) =>
+            setPosts(
+              snapshot.docs.map((doc) => ({
+                id: doc.id,
+                data: doc.data(),
+              }))
+            )
+          );
+      }, []);
     return (
         <div className="feed">
             <div className="feed__inputContainer">
@@ -16,7 +34,7 @@ const Feed = () => {
                     <CreateIcon/>
                     <form>
                         <input type="text"/>
-                        <button type="submit">Send</button>
+                        <button onClick={sendPost} type="submit">Send</button>
                     </form>
                 </div>
                 <div className="feed__inputOptions">
@@ -30,6 +48,9 @@ const Feed = () => {
             />
                 </div>
             </div>
+            {
+                posts.map((post) => <Post/>)
+            }
             <Post name='Mayukh' description='test' message='this worked'/>
         </div>
     );
