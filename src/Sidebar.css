@@ -44,6 +44,7 @@
 }
 
 .sidebar__statNumber {
-    font-weight: bold;
-    
+    font-weight: bold !important;
+    color: #0a66c2 !important;
+
 }
