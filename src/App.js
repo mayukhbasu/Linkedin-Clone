@@ -14,18 +14,17 @@ function App() {
   const user = useSelector(selectUser);
   return (
     <div className="app">
-      
-     {
-       !user ? <Login/> : (
+      <Header />
+
+      {!user ? (
+        <Login />
+      ) : (
         <div className="app__body">
-          <Header/>
-          <Sidebar/>
-          <Feed/>
+          <Sidebar />
+          <Feed />
+          
         </div>
-       )  
-     }
-      
-      
+      )}
     </div>
   );
 }

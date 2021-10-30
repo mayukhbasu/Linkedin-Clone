@@ -35,6 +35,7 @@
     color: #fff;
     background-color:blue;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .login > p {
