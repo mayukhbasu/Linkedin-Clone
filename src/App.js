@@ -11,7 +11,7 @@ import Sidebar from './Sidebar';
 
 
 function App() {
-  const user = useSelector(selectUser);
+  const {user} = useSelector(selectUser);
   return (
     <div className="app">
       <Header />
