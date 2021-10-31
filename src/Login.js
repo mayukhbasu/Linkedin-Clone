@@ -41,6 +41,7 @@ const Login = () => {
     }
 
     const loginToApp = (e) => {
+        console.log("Log in");
         e.preventDefault();
 
     auth
