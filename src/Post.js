@@ -8,6 +8,7 @@ import SendOutlinedIcon from "@material-ui/icons/SendOutlined";
 import './Post.css';
 
 const Post = ({name, description, message, photoUrl}) => {
+    console.log(name);
     return (
         <div className="post">
             <div className="post__header">
